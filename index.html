@@ -1,0 +1,91 @@
+<script src="https://cdn.jsdelivr.net/gh/EpicAMPlifier/FantasyWordGenerator@latest/wordgen.js"></script>
+<style>
+  .spinner{
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-left: 0px;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  #wordDisplay{
+    white-space: pre-wrap;
+  }
+</style>
+
+<h1>Fantasy Word Generator</h1>
+<label for="style-input-field">Word Style:</label>
+<input type="text" placeholder="Language Code" id="style-input-field">
+<label for="number-input-field">Word Quantity</label>
+<input type="number" min="1" max="100" step="5" placeholder="1" id="number-input-field">
+<button id="submitButton" onclick="getFormValues()">Generate</button>
+<br>
+<input type="checkbox" id="paraBox" onclick="toggleBoxes()">Paragraph Mode</input>
+<input type="checkbox" id="advBox" onclick="toggleBoxes()">Advanced Options</input>
+<br>
+<label id="advLabel" for="style-input-field" hidden>Article Title:</label>
+<input type="text" placeholder="Title" id="title-input-field" hidden>
+<br>
+<br>
+<hr>
+<h2>Generated Text:</h2>
+<div id="loadSpinner" class="spinner" style="display: none;"></div>
+<div id="wordDisplay">...</div>
+<script>
+  const wordDisplayDiv = document.getElementById('wordDisplay');
+  const wordQInput = document.getElementById('number-input-field');
+  const wordLangInput = document.getElementById('style-input-field');
+  const advBox = document.getElementById('advBox');
+  const advField = document.getElementById('title-input-field');
+  const spinner = document.getElementById("loadSpinner");
+  let spacer = "\n";
+  let wordQ = 1;
+  let langCode = 'en';
+
+  function getFormValues() {
+    wordDisplayDiv.innerHTML = '';
+    wordQ = parseInt(wordQInput.value) || 1;
+    langCode = wordLangInput.value;
+    generateResultsHTML();
+  }
+
+  async function createResult(title, lang) {
+    spinner.style.display = "inline-block";
+    WordGen.letterLimit = 10;
+    WordGen.sliceMax = 2000;
+    const result = await WordGen.create(title, lang);
+
+    wordDisplayDiv.innerHTML = '';
+    for (let i = 0; i < wordQ; i++) {
+      let finalResult = result();
+      wordDisplayDiv.textContent += finalResult + spacer;
+      spinner.style.display = "none";
+    }
+  }
+
+  function toggleBoxes() {
+    const advIsChecked = document.getElementById('advBox').checked;
+    document.getElementById('title-input-field').hidden = !advIsChecked;
+    document.getElementById('advLabel').hidden = !advIsChecked;
+
+    const paraIsChecked = document.getElementById('paraBox').checked;
+    spacer = paraIsChecked ? " " : "\n";
+  }
+
+  function generateResultsHTML() {
+    let title = 'Hotel';
+
+    if (advBox.checked && advField.value) {
+      title = advField.value;
+    }
+    createResult(title, langCode);
+  }
+</script>
