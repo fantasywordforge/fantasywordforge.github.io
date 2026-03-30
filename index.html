@@ -17,6 +17,26 @@
     color: #b71c1c;
     font-family: 'Palatino', serif;
     white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-top: 20px;
+  }
+  .spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #b71c1c; /* Matches your red text */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  #genTextLabel {
+    margin-top: 20px;
   }
 </style>
 
@@ -35,7 +55,7 @@
 <br>
 <br>
 <hr>
-<h2>Generated Text:</h2>
+<h2 id="genTextLabel">Generated Text:</h2>
 <div id="loadSpinner" class="spinner" style="display: none;"></div>
 <div id="wordDisplay">...</div>
 <script>
@@ -67,8 +87,8 @@
     for (let i = 0; i < wordQ; i++) {
       let finalResult = result();
       wordDisplayDiv.textContent += finalResult + spacer;
-      spinner.style.display = "none";
     }
+    spinner.style.display = "none";
   }
 
   function toggleBoxes() {
