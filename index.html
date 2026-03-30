@@ -1,23 +1,21 @@
 <script src="https://cdn.jsdelivr.net/gh/EpicAMPlifier/FantasyWordGenerator@latest/wordgen.js"></script>
 <style>
-  .spinner{
-    border: 4px solid #f3f3f3; /* Light grey */
-    border-top: 4px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 1s linear infinite;
-    display: inline-block;
-    margin-left: 0px;
+  body {
+    background-color: #f4ecd8; /* Parchment base */
+    color: #5d4037; /* Ink brown */
+    font-family: 'MedievalSharp', cursive;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    /* Simulates aged paper edges */
+    box-shadow: inset 0 0 100px rgba(138, 77, 15, 0.2); 
+    border: 2px solid #8a4d0f;
   }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  #wordDisplay{
-    white-space: pre-wrap;
+  #wordDisplay {
+    font-size: 1.3rem;
+    color: #b71c1c;
+    font-family: 'Palatino', serif;
   }
 </style>
 
