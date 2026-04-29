@@ -1,18 +1,11 @@
 # FantasyWordForge [fantasywordforge.github.io]
 FantasyWordForge is a website that allows you to generate your own fantasy names. These names can be inspired by any language of your choice!
-This website uses the FantasyWordGenerator library by [EpicAMPlifier](https://github.com/EpicAMPlifier). 
+This website uses and is the official demo for the FantasyWordGenerator library by [EpicAMPlifier](https://github.com/EpicAMPlifier). 
 <br><br>
 
 <div>
   <img src="demo.png" width="500">
 </div>
-<br>
-
-# USE CASES:
-- Fantasy character and place names
-- Worldbuilding and writing
-- Game development
-- Procedural content generation
 <br>
 
 # TEST IT OUT!
@@ -25,3 +18,10 @@ Output: ```levolevia```, ```atureas```, ```beneas```, ```amduas```, ```resun```,
 Input: ```Eldstöð``` (Icelandic for volcano), ```IS```. <br>
 Output: ```hawaitað```, ```vatnsgufur```, ```gjóskugosi```, ```dreinum```, ```hraum```, ```yfist```.
 <br><br>
+
+# USE CASES:
+- Fantasy character and place names
+- Worldbuilding and writing
+- Game development
+- Procedural content generation
+<br>
